@@ -51,18 +51,12 @@ const crearContacto = async (req, res) => {
 
 const actualizarContacto = async (req, res) => {
   try {
-    await Contacto.updateOne(
-      { _id: req.body.id },
-      {
-        $set: {
-          nombre: req.body.nombre,
-          apellidos: req.body.apellidos,
-          telefonoMovil: req.body.telefonoMovil,
-          telefonoFijo: req.body.telefonoFijo,
-          direccion: req.body.direccion,
-        },
-      }
-    );
+    // recuperamos los datos recibidos por parámetros
+    const id = req.params.id;
+    const contacto = req.body;
+
+    await Contacto.findByIdAndUpdate(id, contacto);
+
     res.status(200).send({ status: 'OK', message: 'Usuario actualizado' });
   } catch (error) {
     res.status(500).send({ status: 'ERROR', message: error.message });

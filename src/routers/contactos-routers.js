@@ -10,8 +10,8 @@ router.get('/contactos', contactosController.verContactos);
 // POST
 router.post('/crear', contactosController.crearContacto);
 
-// PUT
-router.put('/actualizar/:id', contactosController.actualizarContacto);
+// PATCH
+router.patch('/actualizar/:id', contactosController.actualizarContacto);
 
 // DELETE
 router.delete('/borrar/:id', contactosController.borrarContacto);
